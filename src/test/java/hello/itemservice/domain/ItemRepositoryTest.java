@@ -52,7 +52,7 @@ class ItemRepositoryTest {
 
         //when
         Item savedItem = itemRepository.save(item);
-
+        System.out.println(savedItem.getItemName());
         //then
         Item findItem = itemRepository.findById(item.getId()).get();
         assertThat(findItem).isEqualTo(savedItem);

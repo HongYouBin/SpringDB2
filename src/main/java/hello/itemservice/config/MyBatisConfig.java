@@ -1,8 +1,9 @@
 package hello.itemservice.config;
 
 import hello.itemservice.repository.ItemRepository;
-import hello.itemservice.repository.jdbctemplate.JdbcTemplateItemRepositoryV2;
 import hello.itemservice.repository.jdbctemplate.JdbcTemplateItemRepositoryV3;
+import hello.itemservice.repository.mybatis.ItemMapper;
+import hello.itemservice.repository.mybatis.MyBatisItemRepository;
 import hello.itemservice.service.ItemService;
 import hello.itemservice.service.ItemServiceV1;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,8 @@ import javax.sql.DataSource;
 
 @Configuration
 @RequiredArgsConstructor
-public class JdbcTemplateV3Config {
+public class MyBatisConfig {
+    private final ItemMapper itemMapper;
 
     private final DataSource dataSource;
     @Bean
@@ -23,7 +25,7 @@ public class JdbcTemplateV3Config {
 
     @Bean
     public ItemRepository itemRepository() {
-        return new JdbcTemplateItemRepositoryV3(dataSource);
+        return new MyBatisItemRepository(itemMapper);
     }
 
 }

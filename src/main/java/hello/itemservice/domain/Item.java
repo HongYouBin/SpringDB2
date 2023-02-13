@@ -16,6 +16,7 @@ public class Item {
     private Integer price;
     private Integer quantity;
 
+    //jpa는 기본 생성자가 필수이다.
     public Item() {
     }
 
